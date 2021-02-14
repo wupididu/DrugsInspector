@@ -1,11 +1,18 @@
 [Unit]
-Description=DrugsInspectorService
-After=network.target
+Description=DrugsInspector daemon
+After=dbus.service
+Requires=dbus.service
 
 [Service]
-Type=forking
-ExecStart= /usr/lib/python3 /home/pi/DrugsInspector/Server/srv.py
-Restart=on-failure
+Type=simple
+WorkingDirectory=/home/pi/DrugsInspector/Server
+Environment=PYTHONUNBUFFERED=1
+OOMScoreAdjust=-1000
+ExecStart=/usr/bin/python3 /home/pi/DrugsInspector/Server/srv.py
+TimeoutSec=300
+Restart=always
+# CPUSchedulingPolicy=fifo
+# CPUSchedulingPriority=80
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=multi-user.target 
