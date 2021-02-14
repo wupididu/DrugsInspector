@@ -1,0 +1,11 @@
+[Unit]
+Description=DrugsInspectorService
+After=network.target
+
+[Service]
+Type=forking
+ExecStart= /usr/lib/python3 /home/pi/DrugsInspector/Server/srv.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
