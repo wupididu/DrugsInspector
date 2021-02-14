@@ -1,5 +1,5 @@
 [Unit]
-Description=DrugsInspector daemon
+Description=DrugsInspector_daemon
 After=dbus.service
 Requires=dbus.service
 
