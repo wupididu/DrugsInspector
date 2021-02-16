@@ -2,43 +2,41 @@ package com.androiddevs.drugsinspectr
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.androiddevs.drugsinspectr.Client.Client
+import androidx.lifecycle.ViewModelProviders
+import com.androiddevs.drugsinspectr.db.entities.DrugItem
 import kotlinx.android.synthetic.main.activity_main.*
+import org.kodein.di.Kodein
+import org.kodein.di.KodeinAware
+import org.kodein.di.android.kodein
+import org.kodein.di.generic.instance
 import java.io.IOException
 import java.nio.charset.Charset
 
 @Suppress("DEPRECATION")
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), KodeinAware {
 
-    lateinit var client: Client
+    override val kodein: Kodein by kodein()
+
+    private val factory: DrugsViewModelFactory by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        client = Client()
+        val viewModel = ViewModelProviders.of(this, factory).get(DrugViewModel::class.java)
 
-    }
-
-    override fun onResume() {
-        super.onResume()
+        val item = DrugItem(title = "titledsf", description = "desc", amount = 2, dosage = 23F, id = 2)
 
         button.setOnClickListener {
 
-            Thread(Runnable {
-                kotlin.run {
-                    try {
-                        client.openConnection()
-                        client.sendData(send_mes.text.toString().toByteArray(Charset.defaultCharset()))
-                        tv_get_mes.text = client.getData()
-                        client.closeConnection()
-                    }catch (e: IOException){
-                        Log.d("Client", e.toString())
-                    }
-                }
-            }).start()
+            viewModel.insert(item)
+
+        }
+
+        btn_delete.setOnClickListener {
+            viewModel.delete(item)
         }
     }
+
 
 }
