@@ -3,6 +3,30 @@ import codecs
 import json
 
 
+class Drug(object):
+    __title = str()
+    __description = str()
+    __amount = int()
+    __dose = float()
+
+    def fromDict(self, jdata):
+        self.__title = jdata["drags_title"]
+        self.__description = jdata["drags_description"]
+        self.__amount = jdata["drags_amount"]
+        self.__dose = jdata["drags_dosage"]
+
+    def getTitle(self):
+        return self.__title
+
+    def getDescription(self):
+        return self.__description
+
+    def getAmount(self):
+        return self.__amount
+
+    def getDose(self):
+        return self.__dose
+
 soc = jpysocket.jpysocket()
 host = ""
 port = 1999
@@ -15,10 +39,10 @@ try:
         msg = conn.recv(1024)
         msg = codecs.decode(msg, 'utf-8')
         jsonDATA = json.loads(msg)
-        print(jsonDATA["drags_title"])
-        print(jsonDATA["drags_description"])
-        print(jsonDATA["drags_amount"])
-        print(jsonDATA["drags_dosage"])
-
+        drug = Drug()
+        print(drug.getTitle())
+        print(drug.getDescription())
+        print(drug.getAmount())
+        print(drug.getDose())
 except KeyboardInterrupt:
     exit(0)
