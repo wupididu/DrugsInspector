@@ -1,5 +1,7 @@
 import jpysocket
 import codecs
+import json
+
 
 soc = jpysocket.jpysocket()
 host = ""
@@ -12,12 +14,9 @@ try:
         print("Got connection from", addr)
         msg = conn.recv(1024)
         msg = codecs.decode(msg, 'utf-8')
-        print(msg)
-        if (msg == "Hello"):
-            conn.send(jpysocket.jpyencode("facepalm chel ty v mute"))
-            print("norm chel")
-        else:
-            conn.send(jpysocket.jpyencode("ladno)"))
-            print("stupid fuck")
+        jsonDATA = json.loads(msg)
+        print(jsonDATA)
+
+
 except KeyboardInterrupt:
     exit(0)

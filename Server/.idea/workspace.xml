@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cb6e8bd4-b282-4b97-953e-9e60cc112d8e" name="Default Changelist" comment="" />
+    <list default="true" id="cb6e8bd4-b282-4b97-953e-9e60cc112d8e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srv.py" beforeDir="false" afterPath="$PROJECT_DIR$/srv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srv.service" beforeDir="false" afterPath="$PROJECT_DIR$/srv.service" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,5 +73,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

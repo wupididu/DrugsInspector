@@ -4,7 +4,7 @@ After=dbus.service
 Requires=dbus.service
 
 [Service]
-Type=simple
+Type=forked
 WorkingDirectory=/home/pi/DrugsInspector/Server
 Environment=PYTHONUNBUFFERED=1
 OOMScoreAdjust=-1000
