@@ -27,6 +27,7 @@ class Drug(object):
     def getDose(self):
         return self.__dose
 
+
 soc = jpysocket.jpysocket()
 host = ""
 port = 1999
@@ -40,6 +41,7 @@ try:
         msg = codecs.decode(msg, 'utf-8')
         jsonDATA = json.loads(msg)
         drug = Drug()
+        drug.fromDict(jsonDATA)
         print(drug.getTitle())
         print(drug.getDescription())
         print(drug.getAmount())
