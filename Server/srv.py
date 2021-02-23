@@ -15,8 +15,10 @@ try:
         msg = conn.recv(1024)
         msg = codecs.decode(msg, 'utf-8')
         jsonDATA = json.loads(msg)
-        print(jsonDATA)
-
+        print(jsonDATA["drags_title"])
+        print(jsonDATA["drags_description"])
+        print(jsonDATA["drags_amount"])
+        print(jsonDATA["drags_dosage"])
 
 except KeyboardInterrupt:
     exit(0)
